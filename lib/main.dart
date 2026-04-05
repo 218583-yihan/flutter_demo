@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
           backgroundColor: Colors.blue,
           title: const Text('APP Title'),
         ),
-        body: const Text('data'),
+        body: const Center(child: const Text('data')),
         bottomNavigationBar: BottomNavigationBar(
           items: const [
             BottomNavigationBarItem(label: 'Home', icon: Icon(Icons.home)),
