@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp( MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatefulWidget {
@@ -12,8 +12,8 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-String buttoName = 'Click';
-
+  String buttoName = 'Click';
+  int currentIndex = 0;
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -24,12 +24,32 @@ String buttoName = 'Click';
           title: const Text('APP Title'),
         ),
         body: Center(
-          child: ElevatedButton(
-            onPressed: () {
-              setState(() {
-               buttoName = 'Clicked';
-              });
-            }, child:  Text(buttoName)),
+          child: SizedBox(
+            width: double.infinity,
+            height: double.infinity,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                ElevatedButton(
+                  onPressed: () {
+                    setState(() {
+                      buttoName = 'Clicked';
+                    });
+                  },
+                  child: Text(buttoName),
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    setState(() {
+                      buttoName = 'Clicked';
+                    });
+                  },
+                  child: Text(buttoName),
+                ),
+              ],
+            ),
+          ),
         ),
         bottomNavigationBar: BottomNavigationBar(
           items: const [
@@ -39,6 +59,12 @@ String buttoName = 'Click';
               icon: Icon(Icons.settings),
             ),
           ],
+          currentIndex: currentIndex,
+          onTap: (int index) {
+            setState(() {
+              currentIndex = index;
+            });
+          },
         ),
       ),
     );
