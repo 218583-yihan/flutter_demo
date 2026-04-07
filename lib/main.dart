@@ -24,14 +24,19 @@ class _MyAppState extends State<MyApp> {
           title: const Text('APP Title'),
         ),
         body: Center(
-          child: SizedBox(
+          child: currentIndex == 0 ?Container(
             width: double.infinity,
             height: double.infinity,
+            color: Colors.red,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 ElevatedButton(
+                  style:ElevatedButton.styleFrom(
+                    foregroundColor: Colors.red,
+                    backgroundColor: Colors.orange,
+                  ),
                   onPressed: () {
                     setState(() {
                       buttoName = 'Clicked';
@@ -49,7 +54,7 @@ class _MyAppState extends State<MyApp> {
                 ),
               ],
             ),
-          ),
+          ) : Image.network('https://i.ebayimg.com/images/g/r1AAAeSwuJNoud11/s-l1600.jpg'),
         ),
         bottomNavigationBar: BottomNavigationBar(
           items: const [
