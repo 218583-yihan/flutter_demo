@@ -54,7 +54,7 @@ class _MyAppState extends State<MyApp> {
                 ),
               ],
             ),
-          ) : Image.network('https://i.ebayimg.com/images/g/r1AAAeSwuJNoud11/s-l1600.jpg'),
+          ) : Image.asset('images/FLAGG.jpg'),
         ),
         bottomNavigationBar: BottomNavigationBar(
           items: const [
