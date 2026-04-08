@@ -12,49 +12,69 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  String buttoName = 'Click';
-  int currentIndex = 0;
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Scaffold(
+      home: MyAppExt(),
+    );
+  }
+}
+
+class MyAppExt extends StatefulWidget {
+  const MyAppExt({super.key});
+
+  @override
+  State<MyAppExt> createState() => _MyAppExtState();
+}
+
+class _MyAppExtState extends State<MyAppExt> {
+    String buttoName = 'Click';
+  int currentIndex = 0;
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.blue,
           title: const Text('APP Title'),
         ),
         body: Center(
-          child: currentIndex == 0 ?Container(
-            width: double.infinity,
-            height: double.infinity,
-            color: Colors.red,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                ElevatedButton(
-                  style:ElevatedButton.styleFrom(
-                    foregroundColor: Colors.red,
-                    backgroundColor: Colors.orange,
+          child: currentIndex == 0
+              ? Container(
+                  width: double.infinity,
+                  height: double.infinity,
+                  color: Colors.red,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          foregroundColor: Colors.red,
+                          backgroundColor: Colors.orange,
+                        ),
+                        onPressed: () {
+                          setState(() {
+                            buttoName = 'Clicked';
+                          });
+                        },
+                        child: Text(buttoName),
+                      ),
+                      ElevatedButton(
+                        onPressed: () {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (BuildContext context) =>
+                                  const NextPage(),
+                            ),
+                          );
+                        },
+                        child: const Text('Next Page'),
+                      ),
+                    ],
                   ),
-                  onPressed: () {
-                    setState(() {
-                      buttoName = 'Clicked';
-                    });
-                  },
-                  child: Text(buttoName),
-                ),
-                ElevatedButton(
-                  onPressed: () {
-                    setState(() {
-                      buttoName = 'Clicked';
-                    });
-                  },
-                  child: Text(buttoName),
-                ),
-              ],
-            ),
-          ) : Image.asset('images/FLAGG.jpg'),
+                )
+              : Image.asset('images/FLAGG.jpg'),
         ),
         bottomNavigationBar: BottomNavigationBar(
           items: const [
@@ -71,7 +91,17 @@ class _MyAppState extends State<MyApp> {
             });
           },
         ),
-      ),
-    );
+      );
+  }
+}
+
+
+
+class NextPage extends StatelessWidget {
+  const NextPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(appBar: AppBar());
   }
 }
